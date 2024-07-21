@@ -1,0 +1,59 @@
+Looking at Machine Learning Techniques:
+
+Rule-based Approach:
+- cannot recognize hidden patterns
+- cannot predict fraud by going beyond rules
+- canntot respond to new situations, not trained on
+
+Modern alternative (Data Science Approach):
+- leverage vast amounts of data and model it in a way that lets us flag or
+predict fraud in future transactions
+- machine learning, deep neural networks
+
+Machine Learning:
+- Supervised Learning:
+  - predict values of response variable (regression)
+  - predict labels of predefinied cateogries (classification tasks)
+  - Types & Issues:
+    - data labeling: some labels will be wrong
+    - unbalanced data: one class is more frequent than the others, so data is unbalanced
+      - <1% are frauds
+
+- Unsupervised Learning:
+  - identifies clusters, outliers, or anomalies in the data set
+  - Types & Issues:
+    - PCA: identify hidden patterns in data
+      - reduce number of features for ML, while preserving most important patters of the data
+    - K-Means Clustering: find patterns in data using clusters
+
+************** WE WILL BE DOING SUPERVISED LEARNING **************
+
+
+Our Challenges:
+
+- unbalanced data: 
+  - operational efficency
+    - have less than 8 seconds to flag a transaction
+  - incorrect flagging
+  - sampling methods:
+    - it could favor majority class, therfore having a large classification error over the fraud cases
+    - on training set
+      - random over-sampling: copy cases in fraud cases mulitple times till you reach the number you want
+      - random under-sampling: remove some of the legitimate cases
+      - both: up and down sampling
+    - BOTH OF THESE ARE UNDESIRED
+    - synthetic minority over-sampling technique:
+      - over sample fraud cases by creating sythetic fraud cases
+        - say there is a graph where each point is a case (x=amount, y=ration)
+        - find k nearest fraudulent neighbor of fraud X
+        - randomly choose one of X's nearest neighbor
+        - find x, y coordinate of both points
+        - synthetic case:
+          - x is x1 + rand(0, 1) * (x2-x1)
+          - y is y1 + rand(0, 1) * (y2-y1)
+        - do this for each point
+
+
+We will run through our data and try out random over-sampling, random under-sampling, and
+synthetic minority over-sampling. We will show the differences through scatterplots and prediction
+accuracy.
